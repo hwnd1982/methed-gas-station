@@ -1,0 +1,284 @@
+* {
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  margin:0px;
+  height:100vh;
+  background-color: #1283da;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+.app {
+  display: grid;
+  height: 100%;
+  grid-template-columns: min-content 1fr min-content;
+  grid-template-areas: 'btn title-station title-total' 'queue station bill';
+  grid-auto-rows: min-content 1fr;
+  align-items: start;
+  padding: 50px;
+  gap: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.columns {
+  grid-area: columns;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 70px 20px 20px;
+  background: #fff;
+  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
+}
+
+.columns>:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 100px;
+  background-position: center left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-left: 120px;
+}
+
+.column-index {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -40px;
+  left: 25px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #1283da;
+  color: #fff;
+  font-weight: 600;
+}
+
+.column-count {
+  max-width: 5ch;
+  width: 100%;
+  text-align: right;
+}
+
+.column-count::after {
+  content: 'л';
+}
+
+.car {
+  display: inline-block;
+  min-height: 40px;
+  padding: 10px 0 10px 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 1.5
+}
+
+
+.petrol {
+  background-image: url(img/petrol-station.svg);
+}
+
+.diesel {
+  background-image: url(img/diesel-station.svg);
+}
+
+.gas {
+  background-image: url(img/gas-station.svg);
+}
+
+.passanger {
+  background-image: url(img/car.svg);
+}
+
+.truck {
+  background-image: url(img/truck.svg);
+}
+
+.form-input {
+  grid-area: btn;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  max-width:400px;
+  padding:20px;
+  background:#fff;
+  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
+    3px 3px 7px rgba(94, 104, 121, 0.377);
+}
+
+.preview {
+  width:100%;
+  display:none;
+  margin-bottom:30px;
+}
+
+.file {
+  display:none;
+}
+
+.label {
+  display:block;
+  width:45%;
+  height:45px;
+  margin-left: 25%;
+  line-height:50px;
+  text-align:center;
+  background:#1172c2;
+  color:#fff;
+  font-size:15px;
+  font-family:"Open Sans",sans-serif;
+  text-transform:Uppercase;
+  font-weight:600;
+  border-radius:5px;
+  cursor:pointer;
+  margin-bottom: 30px;
+}
+
+.title {
+  text-align:center;
+  color:#fff;
+  font-family:"Open Sans",sans-serif;
+  text-transform:Uppercase;
+  font-weight:900;
+  font-size: 2em;
+  align-self: center;
+}
+
+.title-total {
+  grid-area: title-total;
+}
+
+.title-station {
+  grid-area: title-station;
+}
+
+.btn {
+  display:block;
+  width:210px;
+  padding: 5px;
+  line-height:50px;
+  text-align:center;
+  background-color:#1172c2;
+  color:#fff;
+  font-size:15px;
+  font-family:"Open Sans",sans-serif;
+  text-transform:Uppercase;
+  font-weight:600;
+  border-radius:5px;
+  cursor:pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn::before {
+  content: 'Класс ';
+}
+
+.btn:hover {
+  background-color:#1172ff;
+
+}
+.btn:active {
+  background-color:#11cccc;
+  transform: translateY(2px);
+}
+
+.btn:disabled {
+  background:#6699ff;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.display-none {
+  display: none;
+}
+
+.bill {
+  grid-area: bill;
+}
+
+.queue {
+  grid-area: queue;
+}
+
+.bill, .queue {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
+}
+
+.bill-list {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  font-weight: 600;
+}
+
+.total>:not(:last-child) {
+  margin-right: 5px;
+}
+
+.total-label {
+  text-transform: uppercase;
+}
+
+.total-amount::after {
+  content: 'руб';
+  padding-left: 2px;
+}
+
+.total-divider {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  font-size: 10px;
+  vertical-align: baseline;
+}
+
+.station {
+  grid-area: station;
+}
+
+.queue {
+  grid-area: queue;
+}
+
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
