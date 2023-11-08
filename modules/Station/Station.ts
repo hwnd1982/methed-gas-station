@@ -4,18 +4,10 @@ import { checkFuelType, ColumnElementParams, ColumnParams, ColumnType } from "..
 import { Column } from "./Column";
 
 export class Station extends EventEmiter {
-  // #queue: ColumnType<Car[]> = {
-  //   petrol: [],
-  //   diesel: []
-  // }
   #columns: ColumnType<Column[]> = {
     petrol: [],
     diesel: []
   }
-  // #total: ColumnType<number> = {
-  //   petrol: 0,
-  //   diesel: 0
-  // };
 
   constructor(columns: ColumnParams[]) {
     super();
@@ -50,49 +42,14 @@ export class Station extends EventEmiter {
     return this.#columns
   }
 
-  // addCar(car: Car) {
-  //   if (!this.#queue[car.fuelType] && this.#columns[car.fuelType] && checkFuelType(car.fuelType)) {
-  //     this.#queue[car.fuelType] = [];
-  //   }
-
-  //   if (this.#queue[car.fuelType]) {
-  //     this.#queue[car.fuelType]?.push(car);
-  //     this.checkQueue();
-  //   }
-  // }
-
-  // checkQueue() {
-  //   for (const key in this.#columns) {
-  //     const column: Column = this.#columns[key].find((column: Column) => !column.car);
-
-  //     if (column && this.#queue[key]) {
-  //       const car = this.#queue[key]?.shift() || null;
-
-  //       if (car) {
-  //         column.car = car;
-  //         this.emit('next', column.type, column.index, car);
-
-  //         setTimeout(() => {
-  //           column.reset();
-  //           this.emit('reset', column.type, column.index, column.amount);
-  //           this.fill(column);
-  //         }, 2000);
-  //       }
-  //     }
-  //   }
-  // }
-
   fill(column: Column) {
     column.intervalId = setInterval(() => {
       if (!column.tick()) {
-        // Машина уезжает
         return setTimeout(() => {
           column.car = null;
-          // Колонка готова к заправке
           this.emit('leave', column.type, column.index);
           setTimeout(() => {
             this.emit('ready', column.type, column.index);
-            // this.checkQueue();
           }, 3000);
         }, 2000);
       }

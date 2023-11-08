@@ -1,5 +1,5 @@
 import { AppElement } from "./AppElement";
-import { SimpleElement } from "./SimpleElement";
+import { StaticElement } from "./StaticElement";
 import { TotalElement } from "./TotalElement";
 
 export class BillElement extends AppElement {
@@ -7,7 +7,7 @@ export class BillElement extends AppElement {
   setAmount: (value: number) => void
 
   constructor(parent: AppElement) {
-    const list = new SimpleElement('ul', 'bill-list');
+    const list = new StaticElement('ul', 'bill-list');
     const total = new TotalElement();
 
     new AppElement('h2', { className: 'title title-total', textContent: 'Итого' }, { parent });

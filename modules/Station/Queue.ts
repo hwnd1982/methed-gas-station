@@ -1,6 +1,6 @@
 import { Car } from "../Cars/Car";
 import { EventEmiter } from "../services/EventEmiter";
-import { CarElementParams, ColumnType, FuelType } from "../types";
+import { CarElementParams, ColumnType } from "../types";
 
 export class Queue extends EventEmiter {
   #queue: ColumnType<Car[]> = {}

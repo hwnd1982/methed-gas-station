@@ -96,23 +96,23 @@ ul {
 
 
 .petrol {
-  background-image: url(img/petrol-station.svg);
+  background-image: url(./public/img/petrol-station.svg);
 }
 
 .diesel {
-  background-image: url(img/diesel-station.svg);
+  background-image: url(./public/img/diesel-station.svg);
 }
 
 .gas {
-  background-image: url(img/gas-station.svg);
+  background-image: url(./public/img/gas-station.svg);
 }
 
 .passanger {
-  background-image: url(img/car.svg);
+  background-image: url(./public/img/car.svg);
 }
 
 .truck {
-  background-image: url(img/truck.svg);
+  background-image: url(./public/img/truck.svg);
 }
 
 .form-input {

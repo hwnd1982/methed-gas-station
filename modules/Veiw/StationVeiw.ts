@@ -14,12 +14,7 @@ export class StationVeiw implements QueueElementInterface, StationElementInterfa
     const station = new StationElement(columns, parent);
     const bill = new BillElement(parent);
 
-
     this.queueRender = queue.queueRender;
     this.columns = station.columns;
-    // queue
-    // new SimpleElement('h1', 'title title-station', 'Заправочная станция')
-    // new SimpleElement('h2', 'title title-total', 'Итого')
-    // bill
   }
 }

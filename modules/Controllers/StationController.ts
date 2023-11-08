@@ -3,7 +3,7 @@ import { AppElement } from "../Elements/AppElement";
 import { Column } from "../Station/Column";
 import { Queue } from "../Station/Queue";
 import { Station } from "../Station/Station";
-import { ColumnParams, FuelType } from "../types";
+import { ColumnParams } from "../types";
 import { StationVeiw } from "../Veiw/StationVeiw";
 
 export class StationController extends Station {

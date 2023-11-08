@@ -1,6 +1,6 @@
 import { CarKind } from "../types";
 import { AppElement } from "./AppElement";
-import { SimpleElement } from "./SimpleElement";
+import { StaticElement } from "./StaticElement";
 
 export interface ColumnElementInterface {
   setCar: (kind: CarKind | null, name?: string) => void
@@ -13,12 +13,12 @@ export class ColumnElement extends AppElement implements ColumnElementInterface 
   setCount: (value: any) => void
 
   constructor(type: string, index: number) {
-    const count = new SimpleElement('span', 'column-count', '0');
-    const car = new SimpleElement('span', 'car');
+    const count = new StaticElement('span', 'column-count', '0');
+    const car = new StaticElement('span', 'car');
 
     super('li', { className: `column ${type}` }, {
       appends: [
-        new SimpleElement('span', 'column-index', index.toString()),
+        new StaticElement('span', 'column-index', index.toString()),
         car,
         count,
       ]

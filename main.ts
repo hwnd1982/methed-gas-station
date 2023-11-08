@@ -1,6 +1,7 @@
+import './style.css';
 import { AppElement } from './modules/Elements/AppElement';
 import { AppInitElement } from './modules/Elements/AppInitElement';
-import './style.css';
+
 
 class App extends AppElement {
   constructor() {

@@ -1,4 +1,4 @@
-import { CarKind, FuelType } from "../types";
+import { FuelType } from "../types";
 import { Car } from "./Car";
 
 export class Truck extends Car {
