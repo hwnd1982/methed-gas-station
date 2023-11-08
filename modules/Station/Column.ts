@@ -18,7 +18,7 @@ export class Column extends EventEmiter {
     this.#speed = Math.round(1000 / speed);
     setTimeout(() => {
       this.#isReady = true;
-      this.emit('ready'), 1000
+      this.emit('ready', this), 1000
     });
   }
 
@@ -39,10 +39,12 @@ export class Column extends EventEmiter {
     this.#isReady = false;
 
     if (!car) {
+      this.emit('leave', this);
+
       setTimeout(() => {
         this.#isReady = true;
-        this.emit('ready'), 1000
-      });
+        this.emit('ready', this)
+      }, 2000);
       return;
     }
 

@@ -18,7 +18,6 @@ export class Station extends EventEmiter {
       const speed = column.speed || 5;
       const type = column.type;
 
-
       if (!columns[type] && checkFuelType(type)) {
         columns[type] = [];
       }
@@ -26,7 +25,7 @@ export class Station extends EventEmiter {
       for (let i = 0; i < count; i++) {
         const column = new Column(type, speed, ++index);
 
-        column.all(['ready', 'car', 'start', 'fill', 'stop', 'reset'], this.useColumns.bind(this))
+        column.all(['ready', 'car', 'start', 'fill', 'stop', 'leave', 'reset'], this.useColumns.bind(this))
         columns[type]?.push(column);
       }
 
@@ -45,17 +44,9 @@ export class Station extends EventEmiter {
   fill(column: Column) {
     column.intervalId = setInterval(() => {
       if (!column.tick()) {
-        return setTimeout(() => {
+        setTimeout(() => {
           column.car = null;
-          this.emit('leave', column.type, column.index);
-          setTimeout(() => {
-            this.emit('ready', column.type, column.index);
-          }, 3000);
         }, 2000);
-      }
-
-      if (column.car) {
-        this.emit('fill', column.type, column.index, column.amount);
       }
     }, column.speed);
   }
