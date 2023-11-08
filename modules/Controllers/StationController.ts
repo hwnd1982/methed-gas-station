@@ -24,8 +24,7 @@ export class StationController extends Station {
   }
 
   checkColumns(type: string) {
-
-    const column: Column = this.columns[type].find((column: Column) => !column.car);
+    const column: Column = this.columns[type].find((column: Column) => !column.car && column.isReady);
 
     if (column) {
       this.checkQueue(column);
@@ -38,11 +37,9 @@ export class StationController extends Station {
     if (car) {
       column.car = car;
       this.#veiw.queueRender(this.#queue.cars);
-      this.emit('next', column.type, column.index, car);
 
       setTimeout(() => {
         column.reset();
-        this.emit('reset', column.type, column.index, column.amount);
         this.fill(column);
       }, 2000);
     }
@@ -56,7 +53,7 @@ export class StationController extends Station {
         break;
       case 'ready':
         this.#veiw.columns[column.index].setCar(null);
-        setTimeout(() => this.checkQueue(column), 1000);
+        this.checkQueue(column);
         break;
       case 'car':
         if (car) {

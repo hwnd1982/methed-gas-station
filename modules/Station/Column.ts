@@ -9,12 +9,17 @@ export class Column extends EventEmiter {
   #speed: number
   #amount: number = 0
   #index: number
+  #isReady: boolean = false
 
   constructor(type: FuelType, speed: number, index: number) {
     super();
     this.#type = type;
     this.#index = index;
     this.#speed = Math.round(1000 / speed);
+    setTimeout(() => {
+      this.#isReady = true;
+      this.emit('ready'), 1000
+    });
   }
 
   get index() {
@@ -31,13 +36,21 @@ export class Column extends EventEmiter {
 
   set car(car) {
     this.#car = car;
+    this.#isReady = false;
 
     if (!car) {
-      this.emit('ready', this);
+      setTimeout(() => {
+        this.#isReady = true;
+        this.emit('ready'), 1000
+      });
       return;
     }
 
     this.emit('car', this, car);
+  }
+
+  get isReady() {
+    return this.#isReady
   }
 
   get speed() {
