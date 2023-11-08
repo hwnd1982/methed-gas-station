@@ -8,7 +8,7 @@ export const getRandomCar = (): PassangerCar | Truck => {
   const kind = Math.random() < 0.75 ? 'passanger' : 'truck';
   const params = cars[kind][Math.floor(cars[kind].length * Math.random())];
 
-  if (kind === 'passanger' && !params[3] && Math.random() < 0.25) {
+  if (kind === 'passanger' && !params[3] && Math.random() < 0.2) {
     params[3] = 'gas';
   }
 

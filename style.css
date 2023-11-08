@@ -30,16 +30,11 @@ ul {
 }
 
 .columns {
-  grid-area: columns;
-  border-radius: 10px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  padding: 70px 20px 20px;
-  background: #fff;
-  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
+  padding: 50px 0 0;
 }
 
 .columns>:not(:last-child) {
@@ -207,7 +202,7 @@ ul {
 }
 
 .btn:disabled {
-  background:#6699ff;
+  background-color:#6699ff;
   opacity: 0.4;
   cursor: auto;
 }
@@ -224,20 +219,24 @@ ul {
   grid-area: queue;
 }
 
-.bill, .queue {
+.station, .bill, .queue {
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: calc(100vh - 220px);
+  overflow: hidden;
   width: 250px;
   border-radius: 10px;
   padding: 20px;
-  background: #fff;
+  background-color: #fff;
   box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
 }
 
 .bill-list {
   flex-grow: 1;
   flex-shrink: 0;
+  padding: 0;
+  overflow: auto;
 }
 
 .total {
@@ -269,6 +268,7 @@ ul {
 
 .station {
   grid-area: station;
+  width: 100%;
 }
 
 .queue {
@@ -281,4 +281,16 @@ ul {
   padding: 0;
   margin: 0;
   font-size: 13px;
+  overflow: auto;
+}
+
+.columns::-webkit-scrollbar, .bill-list::-webkit-scrollbar, .queue-list::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 2px;
+  background-color: #c7c7c7;
+}
+
+.columns::-webkit-scrollbar-thumb, .bill-list::-webkit-scrollbar-thumb, .queue-list::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #1172c2;
 }
