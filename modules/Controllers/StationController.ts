@@ -51,6 +51,9 @@ export class StationController extends Station {
       case 'reset':
         this.#veiw.columns[column.index].setCount(column.amount);
         break;
+      case 'stop':
+        setTimeout(() => this.#veiw.addItem(column.type, column.index, column.amount), 1000);
+        break;
       case 'leave':
         this.#veiw.columns[column.index].setCar(null);
         break;

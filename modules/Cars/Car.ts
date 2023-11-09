@@ -17,7 +17,7 @@ export abstract class Car extends EventEmiter {
     this.#brand = brand;
     this.#model = model;
     this.#tank = tank;
-    this.#fuel = Math.round(this.#tank * Math.random());
+    this.#fuel = Math.round((this.#tank - 10) * Math.random());
     this.#fullTank = this.#fuel >= this.#tank;
     this.#fuelType = fuel;
     this.#number = genCarNumber();

@@ -3,6 +3,7 @@ import { StaticElement } from "./StaticElement";
 
 export class TotalElement extends AppElement {
   setAmount: (value: number) => void
+  amount: number
 
   constructor() {
     const amount = new StaticElement('span', 'total-amount', '0');
@@ -15,8 +16,10 @@ export class TotalElement extends AppElement {
       ]
     });
 
+    this.amount = 0;
     this.setAmount = (value: number) => {
-      (amount as HTMLElement).textContent = value.toString();
+      this.amount += value;
+      (amount as HTMLElement).textContent = (this.amount).toFixed(2);
     }
   }
 }

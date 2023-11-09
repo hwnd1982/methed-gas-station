@@ -76,7 +76,7 @@ ul {
   text-align: right;
 }
 
-.column-count::after {
+.column-count::after, .bill-volume::after {
   content: 'л';
 }
 
@@ -232,33 +232,59 @@ ul {
   box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377), 3px 3px 7px rgba(94, 104, 121, 0.377);
 }
 
+.bill {
+  justify-content: space-between;
+}
+
 .bill-list {
   flex-grow: 1;
   flex-shrink: 0;
   padding: 0;
   overflow: auto;
+  max-height: 95%;
+  padding-right: 10px;
+  margin-right: -10px;
 }
 
-.total {
+.total, .bill-item, .bill-info {
   display: flex;
   align-items: baseline;
-  font-weight: 600;
+}
+
+.bill-info {
+  width: 55%;
 }
 
 .total>:not(:last-child) {
   margin-right: 5px;
 }
 
-.total-label {
+.bill-info>:not(:last-child), .bill-item>:not(:last-child) {
+  margin-right: 2px;
+}
+
+.total-label, .bill-label {
   text-transform: uppercase;
 }
 
-.total-amount::after {
+.bill-item {
+  font-size: 12px;
+}
+
+.bill-label {
+  white-space: nowrap;
+}
+
+.total-label, .total-amount {
+  font-weight: 600;
+}
+
+.total-amount::after, .bill-amount::after {
   content: 'руб';
   padding-left: 2px;
 }
 
-.total-divider {
+.total-divider, .bill-divider {
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: normal;
